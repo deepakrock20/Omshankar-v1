@@ -1,0 +1,8 @@
+server/
+script/
+.local/
+.replit
+.vscode/
+node_modules/
+*.log
+dist/
