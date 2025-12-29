@@ -19,8 +19,9 @@
 
     <link rel="icon" type="image/png" href="/OMSHANKAR (1).png" />
 
-    <!-- Preload LCP image (highest priority) -->
-    <link rel="preload" as="image" href="/images/profile-1200.avif" type="image/avif" crossorigin>
+    <!-- Preload LCP image (highest priority) - include AVIF and WebP sources with srcset so the browser picks the type it supports -->
+    <link rel="preload" as="image" imagesrcset="/images/profile-1200.avif 1200w, /images/profile-800.avif 800w" imagesizes="(max-width: 768px) 80vw, 40vw" crossorigin>
+    <link rel="preload" as="image" href="/images/profile-1200.webp" type="image/webp" crossorigin>
 
     <!-- Critical above-the-fold styles for Hero (inlined to avoid render-blocking CSS) -->
     <style>
