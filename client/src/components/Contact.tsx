@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Phone, Send } from "lucide-react";
-import bgImg from "@assets/generated_images/neon_cyber_gradient_background.png";
+// @ts-ignore
+import bgImg from "@assets/generated_images/optimized/neon_cyber_gradient_background-1600.avif?url";
 
 export default function Contact() {
   return (
@@ -8,7 +9,7 @@ export default function Contact() {
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm z-10" />
-        <img src={bgImg} alt="bg" className="w-full h-full object-cover" />
+        <img src={bgImg} alt="bg" aria-hidden className="w-full h-full object-cover" loading="lazy" />
       </div>
 
       <div className="container mx-auto px-6 relative z-20">

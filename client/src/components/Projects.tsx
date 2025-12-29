@@ -1,32 +1,57 @@
 import { motion } from "framer-motion";
-import project1 from "@assets/generated_images/abstract_dashboard_data_visualization_glowing.png";
-import project2 from "@assets/generated_images/seo_search_digital_network_glowing.png";
-import project3 from "@assets/generated_images/social_media_creative_collage_abstract.png";
+// @ts-ignore
+import project1_1200 from "@assets/generated_images/optimized/abstract_dashboard_data_visualization_glowing-1200.avif?url";
+// @ts-ignore
+import project1_800 from "@assets/generated_images/optimized/abstract_dashboard_data_visualization_glowing-800.avif?url";
+// @ts-ignore
+import project1_400 from "@assets/generated_images/optimized/abstract_dashboard_data_visualization_glowing-400.avif?url";
+
+// @ts-ignore
+import project2_1200 from "@assets/generated_images/optimized/seo_search_digital_network_glowing-1200.avif?url";
+// @ts-ignore
+import project2_800 from "@assets/generated_images/optimized/seo_search_digital_network_glowing-800.avif?url";
+// @ts-ignore
+import project2_400 from "@assets/generated_images/optimized/seo_search_digital_network_glowing-400.avif?url";
+
+// @ts-ignore
+import project3_1200 from "@assets/generated_images/optimized/social_media_creative_collage_abstract-1200.avif?url";
+// @ts-ignore
+import project3_800 from "@assets/generated_images/optimized/social_media_creative_collage_abstract-800.avif?url";
+// @ts-ignore
+import project3_400 from "@assets/generated_images/optimized/social_media_creative_collage_abstract-400.avif?url";
 import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
     title: "Revenue Growth Dashboard",
     category: "Data Strategy",
-    image: project1,
+    image: {
+      src1200: project1_1200,
+      src800: project1_800,
+      src400: project1_400,
+    },
     description: "Implemented digital strategies for L4RG resulting in measurable revenue uptake.",
     tags: ["Analytics", "Strategy", "Growth"]
   },
   {
     title: "SEO Infrastructure",
     category: "Web Development",
-    image: project2,
+    image: {
+      src1200: project2_1200,
+      src800: project2_800,
+      src400: project2_400,
+    },
     description: "Optimized WordPress architecture for MyCaptain, boosting organic traffic.",
     tags: ["SEO", "WordPress", "Optimization"]
   },
   {
     title: "Digital Brand Campaign",
     category: "Social Media",
-    image: project3,
-    description: "Executed high-engagement social campaigns for CareerCarve.",
-    tags: ["Branding", "Content", "Design"]
-  }
-];
+    image: {
+      src1200: project3_1200,
+      src800: project3_800,
+      src400: project3_400,
+    },
 
 export default function Projects() {
   return (
@@ -64,11 +89,15 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-2xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
                 <div className="relative rounded-2xl overflow-hidden glass-panel border border-white/10 aspect-video">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
+                  <picture>
+                    <source type="image/avif" srcSet={`${project.image.src1200} 1200w, ${project.image.src800} 800w, ${project.image.src400} 400w`} sizes="(max-width: 768px) 90vw, 60vw" />
+                    <img 
+                      src={project.image.src1200} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                  </picture>
                 </div>
               </div>
 

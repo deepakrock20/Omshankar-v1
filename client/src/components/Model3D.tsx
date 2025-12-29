@@ -86,13 +86,19 @@ export default function Model3D({ src = "/stylized student 3d model.glb" }: { sr
     let currentRotationY = 0;
     const rotationRange = 1.5 * Math.PI; // radians of left-right motion
 
-    const onPointerMove = (e: PointerEvent) => {
-      if (!mountRef.current) return;
-      // ignore pointer movement while pressing/clicking (user asked: movement only via cursor movement, not by dragging)
-      if (e.buttons && e.buttons !== 0) return;
+    // Throttle pointer reads with rAF to avoid forced synchronous layout reads on each pointer event
+    let lastClientX = 0;
+    let lastClientY = 0;
+    let ticking = false;
+
+    const processPointer = () => {
+      if (!mountRef.current) {
+        ticking = false;
+        return;
+      }
       const rect = mountRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left; // x within element
-      const y = e.clientY - rect.top;
+      const x = lastClientX - rect.left; // x within element
+      const y = lastClientY - rect.top;
       const nx = (x - rect.width / 2) / (rect.width / 2); // -1..1
       const clamped = Math.max(-1, Math.min(1, nx));
       targetRotationY = clamped * rotationRange;
@@ -103,6 +109,19 @@ export default function Model3D({ src = "/stylized student 3d model.glb" }: { sr
       if (glowRef.current) {
         glowRef.current.style.setProperty("--mx", `${px}%`);
         glowRef.current.style.setProperty("--my", `${py}%`);
+      }
+
+      ticking = false;
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!mountRef.current) return;
+      if (e.buttons && e.buttons !== 0) return; // ignore when mouse buttons pressed
+      lastClientX = e.clientX;
+      lastClientY = e.clientY;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(processPointer);
       }
     };
 

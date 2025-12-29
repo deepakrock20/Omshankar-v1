@@ -5,7 +5,7 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 1000], [0, 400]);
 
   return (
-    <section className="relative h-screen flex flex-col justify-center overflow-hidden">
+    <section className="hero-critical relative h-screen flex flex-col justify-center overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-600/30 rounded-full blur-[100px] animate-pulse" />
@@ -78,11 +78,18 @@ export default function Hero() {
 
             {/* Image fills the container; no extra background so no visible square box */}
             <div className="relative w-full h-full rounded-3xl overflow-hidden">
-              <img
-                src="/1000159971.png"
-                alt="Profile"
-                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 rounded-3xl"
-              />
+              <picture>
+                <source type="image/avif" srcSet="/images/profile-1200.avif 1200w, /images/profile-800.avif 800w, /images/profile-400.avif 400w" sizes="(max-width: 768px) 80vw, 40vw" />
+                <source type="image/webp" srcSet="/images/profile-1200.webp 1200w, /images/profile-800.webp 800w, /images/profile-400.webp 400w" sizes="(max-width: 768px) 80vw, 40vw" />
+                <img
+                  src="/images/profile-1200.webp"
+                  alt="Omshankar Passi portrait"
+                  className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 rounded-3xl"
+                  width={1200}
+                  height={2000}
+                  {...({ fetchpriority: "high" } as any)}
+                />
+              </picture>
             </div>
           </div>
         </motion.div>

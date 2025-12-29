@@ -1,13 +1,15 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import About from "@/components/About";
-import Certifications from "@/components/Certifications";
-import Experience from "@/components/Experience";
-import Skills from "@/components/Skills";
-import Contact from "@/components/Contact";
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Suspense, lazy } from "react";
+
+// Lazy-load non-critical below-the-fold sections to reduce initial bundle and TBT
+const Marquee = lazy(() => import("@/components/Marquee"));
+const About = lazy(() => import("@/components/About"));
+const Certifications = lazy(() => import("@/components/Certifications"));
+const Experience = lazy(() => import("@/components/Experience"));
+const Skills = lazy(() => import("@/components/Skills"));
+const Contact = lazy(() => import("@/components/Contact"));
 // @ts-ignore
 import NET from "vanta/dist/vanta.net.min";
 import * as THREE from "three";
@@ -59,13 +61,17 @@ export default function Home() {
 
       <div className="relative z-10">
         <Navbar />
-        <Hero />
-        <Marquee />
-        <About />
-        <Certifications />
-        <Experience />
-        <Skills />
-        <Contact />
+        <main role="main">
+          <Hero />
+          <Suspense fallback={null}>
+            <Marquee />
+            <About />
+            <Certifications />
+            <Experience />
+            <Skills />
+            <Contact />
+          </Suspense>
+        </main>
       </div>
     </motion.div>
   );

@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 // @ts-ignore - vanta has no types
 import NET from "vanta/dist/vanta.net.min";
 import * as THREE from "three";
-import wireframeImg from "@assets/generated_images/colorful_digital_glass_texture.png";
+// @ts-ignore
+import wireframeImg from "@assets/generated_images/optimized/colorful_digital_glass_texture-1200.avif?url";
 import Model3D from "./Model3D";
 
 export default function About() {

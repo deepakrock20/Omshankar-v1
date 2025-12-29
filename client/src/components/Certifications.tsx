@@ -12,15 +12,15 @@ import { useEffect, useState } from "react";
 
 // Certificate images
 // @ts-ignore
-import aiCertUrl from "@assets/WhatsApp Image 2025-12-14 at 8.08.54 PM.jpeg?url";
+import aiCertUrl from "@assets/optimized/WhatsApp_Image_2025-12-14_at_8.08.54_PM-1200.avif?url";
 // @ts-ignore
-import itCertUrl from "@assets/WhatsApp Image 2025-12-11 at 8.03.35 PM.jpeg?url";
+import itCertUrl from "@assets/optimized/WhatsApp_Image_2025-12-11_at_8.03.35_PM-1200.avif?url";
 // @ts-ignore
-import spmCertUrl from "@assets/WhatsApp Image 2025-12-11 at 8.03.35 PM (2).jpeg?url";
+import spmCertUrl from "@assets/optimized/WhatsApp_Image_2025-12-11_at_8.03.35_PM_(2)-1200.avif?url";
 // @ts-ignore
-import finCertUrl from "@assets/WhatsApp Image 2025-12-11 at 8.03.35 PM (1).jpeg?url";
+import finCertUrl from "@assets/optimized/WhatsApp_Image_2025-12-11_at_8.03.35_PM_(1)-1200.avif?url";
 // @ts-ignore
-import dmCertUrl from "@assets/Omshankar_complition_certificate.png?url";
+import dmCertUrl from "@assets/optimized/Omshankar_complition_certificate-1200.avif?url";
 
 const certifications = [
   {

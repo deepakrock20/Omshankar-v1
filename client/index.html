@@ -2,21 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Omshankar Passi — Digital Marketing, SEO & Web Developer</title>
+    <meta name="description" content="Omshankar Passi — Digital Marketing & Web Development portfolio. SEO specialist, web developer, and designer focused on conversions and performance." />
+    <meta name="robots" content="index, follow" />
 
     <meta property="og:title" content="Omshankar Passi | Digital Portfolio" />
     <meta property="og:description" content="Digital Marketing & Web Development Professional Portfolio" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://replit.com/public/images/opengraph.png" />
+    <meta property="og:image" content="/opengraph.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@replit" />
     <meta name="twitter:title" content="Omshankar Passi | Digital Portfolio" />
     <meta name="twitter:description" content="Digital Marketing & Web Development Professional Portfolio" />
-    <meta name="twitter:image" content="https://replit.com/public/images/opengraph.png" />
+    <meta name="twitter:image" content="/opengraph.jpg" />
 
     <link rel="icon" type="image/png" href="/OMSHANKAR (1).png" />
-    
-    <!-- Fonts: Syne (Display) and Manrope (Body) for that Architectural feel -->
+
+    <!-- Preload LCP image (highest priority) -->
+    <link rel="preload" as="image" href="/images/profile-1200.avif" type="image/avif" crossorigin>
+
+    <!-- Critical above-the-fold styles for Hero (inlined to avoid render-blocking CSS) -->
+    <style>
+      /* Minimal critical CSS for first paint - do NOT modify visual intent */
+      html,body,#root{height:100%}
+      .hero-critical{min-height:100vh;display:flex;align-items:center}
+      .hero-image{max-width:720px;width:100%;aspect-ratio:3/5}
+    </style>
+
+    <!-- Fonts: Syne (Display) and Manrope (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Syne:wght@400..800&display=swap" rel="stylesheet">

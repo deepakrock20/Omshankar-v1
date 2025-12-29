@@ -39,16 +39,21 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
-    // Split vendor dependencies into a separate chunk to reduce the main bundle size
+    // Split vendor dependencies into separate chunks to lower initial bundle and improve caching
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            return 'vendor';
+            if (id.includes('react')) return 'vendor-react';
+            if (id.includes('framer-motion')) return 'vendor-framer';
+            if (id.includes('three') || id.includes('vanta')) return 'vendor-graphics';
+            // catch-all for other large libs (radix, recharts, etc.)
+            return 'vendor~misc';
           }
         },
       },
     },
+    sourcemap: false,
     chunkSizeWarningLimit: 1500, // raise warning threshold (KB) to avoid noisy warnings
   },
   server: {
